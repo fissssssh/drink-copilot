@@ -1,8 +1,6 @@
 ﻿name: Send Water Reminder Once
 
 on:
-  schedule:
-    - cron: "0 1-15 * * *"
   workflow_dispatch:
 
 jobs:
