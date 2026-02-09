@@ -1,0 +1,23 @@
+﻿name: Send Water Reminder Once
+
+on:
+  schedule:
+    - cron: "0 1-15 * * *"
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Send reminder once
+        env:
+          SENDKEY: ${{ secrets.SENDKEY }}
+          PUSH_UID: ${{ secrets.UID }}
+        run: |
+          go run .
